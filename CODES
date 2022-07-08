@@ -1,0 +1,74 @@
+import numpy as np
+import pandas as pd
+
+import warnings
+warnings.filterwarnings('ignore')
+
+"models"
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+"metrics"
+from sklearn.metrics import accuracy_score,confusion_matrix, classification_report
+
+#vizuals
+import seaborn as sns
+import matplotlib.pyplot as plt
+import datetime
+import plotly.express as px
+
+
+import pandas as pd
+data=pd.read_excel('bankloan.xls')
+data.head(5)
+
+SPLITTING THE DATASET
+x=np.array(data1[['age', 'ed', 'employ', 'income', 'debtinc', 'creddebt', 'othdebt']])
+y = np.array(data1[['default']])
+X_train,X_test,y_train,y_test = train_test_split(x,y, test_size=0.2, random_state = 1)
+
+TRAINING THE MODEL
+LR = LogisticRegression(solver='liblinear').fit(X_train,y_train)
+Preds = LR.predict(X_train)
+Logistic_Regression_Accuracy = accuracy_score(Preds,y_train)
+print(f'Accuracy Score = {Logistic_Regression_Accuracy}')
+
+TESTING THE MODEL
+reds2 = LR.predict(X_test)
+LR_AC2 = accuracy_score(Preds2,y_test)
+print(f'Accuracy Score = {LR_AC2}')
+
+CONFUSION MATRIX
+sns.heatmap(confusion_matrix(y_test, Preds2), annot = True,);
+
+WORKING WITH BALANCE DATASET(UNDERSAMPLING TECHINQUE)
+wont_pay = data[data["default"] == 0]
+pay = data[data["default"] == 1]
+print(f'pay: {wont_pay.default.value_counts()[0]} & wont_pay : {pay.default.value_counts()[1]}')
+
+SPLITTING DATASET
+x=np.array(data2[['age', 'ed', 'employ', 'income', 'debtinc', 'creddebt', 'othdebt']])
+y = np.array(data2[['default']])
+X_train,X_test,y_train,y_test = train_test_split(x,y, test_size=0.2, random_state = 3)
+
+TRAINING MODEL
+model1 = LogisticRegression(solver='liblinear').fit(X_train,y_train)
+train_model = model1.predict(X_train)
+model = accuracy_score(train_model,y_train)
+print(f'Accuracy Score = {model}')
+print(f'Error_rate = {1-model}')
+
+TESTING MODEL
+test_model = model1.predict(X_test)
+model = accuracy_score(test_model,y_test)
+Error_rate = 1 - model
+print(f'Accuracy Score = {model}')
+print(f'Error_rate = {Error_rate}')
+
+CONFUSION MATRIX
+sns.heatmap(confusion_matrix(y_test,test_model),
+                annot = True,
+                );
+                
+print(classification_report(y_test,test_model))
