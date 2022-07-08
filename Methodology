@@ -1,0 +1,57 @@
+Methodology
+The dataset is made up of simulated from Kaggle with loan acquired from a financial institution, with both the borrower paying 
+at the end of the stated period and not paying at the end of the stated period. The total number of loan is 850,
+with 183 borrowers not paying at the end of the stated period. 
+The dataset contain 12 columns (['age', 'ed', 'employ', 'address', 'income', 'debtinc', 'creddebt', 'othdebt', 'default', 'preddef1', 'preddef2', 'preddef3'])
+of which preddef1, preddef2, preddef3, address are irrelevant iin fitting the model. age= age of the borrower
+
+ed=education level of the borrower
+
+employ= number of employment of the borrower
+
+income= income level of the borrower in thousands
+
+debtinc= debt interest calculation
+
+creddebt= actual debt of the borrower
+
+othedebt=other debt of the borrower
+
+default= status of either settled on time or not[0= settled loan on time 1=did not settle loan on time]
+
+#Confusion Matrix Explanation
+
+Confusion matrix is in a form of square which is divided into four segments with the top right corner named FP and top left corner named TN,
+left down corner named FN and right down corner named TP.
+
+Positive (P): A positive observation has been made.
+
+Negative (N): indicates that the observation is negative.
+
+True Positive (TP): The observation is positive and will be positive.
+
+False Negative (FN): The observation is positive, but the outcome is expected to be negative.
+
+True Negative (TN): The observation is negative and will be negative.
+
+False Positive (FP): A negative observation is projected to be positive.
+
+Accuracy is defined as the percentage of correct classifications out of the total number of cases.
+
+Accuracy = TP + TN / TP+TN+FP+FN
+
+Remember, it's the percentage of instances with valid positive classifications that are genuinely positive.
+
+Recall = TP/ TP + FN
+
+Precision: It is the proportion of correct positive classification from cases that are predicted as positive.
+
+Precision = TP / TP + FP
+
+we will use logistic regression to fit the model with the help of python programming language, using jupyternote book IDE
+
+And our dataset is imbalace with the imbalace dataset I will use undersampling techique to resolve that.
+
+Undersampling Technique
+Undersampling is a technique to balance uneven datasets by keeping all of the data in the minority class and decreasing the size of the majority class.
+It is one of several techniques data scientists can use to extract more accurate information from originally imbalanced datasets
